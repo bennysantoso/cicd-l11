@@ -19,3 +19,9 @@ jobs:
         remote_host: 104.198.66.197
         remote_user: bennysantoso
         remote_key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+
+    - name: Build
+      run: |
+        composer update
+        sudo chgrp -R www-data storage bootstrap/cache
+        sudo chmod -R ug+rwx storage bootstrap/cache
