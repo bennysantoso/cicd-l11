@@ -13,7 +13,7 @@ jobs:
     - name: Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        switches: -avzr --delete
         path: /
         remote_path: /var/www/html/cicd-l11/
         remote_host: 104.198.66.197
