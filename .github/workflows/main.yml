@@ -1,27 +1,27 @@
-on:
-  push:
-    branches: [ main ]
-name: Deploy website on push
-jobs:
-  web-deploy:
-    name: Auto Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: Get latest code
-      uses: actions/checkout@v2.3.2
+# on:
+#   push:
+#     branches: [ main ]
+# name: Deploy website on push
+# jobs:
+#   web-deploy:
+#     name: Auto Deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Get latest code
+#       uses: actions/checkout@v2.3.2
 
-    - name: Sync files
-      uses: burnett01/rsync-deployments@4.1
-      with:
-        # switches: -avzr --delete
-        path: /
-        remote_path: /var/www/html/cicd-l11/
-        remote_host: 104.198.66.197
-        remote_user: bennysantoso
-        remote_key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+#     - name: Sync files
+#       uses: burnett01/rsync-deployments@4.1
+#       with:
+#         # switches: -avzr --delete
+#         path: /
+#         remote_path: /var/www/html/cicd-l11/
+#         remote_host: 104.198.66.197
+#         remote_user: bennysantoso
+#         remote_key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
 
-    - name: Build Laravel
-      run: |
-        composer update
-        sudo chgrp -R www-data storage bootstrap/cache
-        sudo chmod -R ug+rwx storage bootstrap/cache
+#     - name: Build Laravel
+#       run: |
+#         composer update
+#         sudo chgrp -R www-data storage bootstrap/cache
+#         sudo chmod -R ug+rwx storage bootstrap/cache
