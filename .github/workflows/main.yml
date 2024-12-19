@@ -13,7 +13,7 @@ jobs:
     - name: Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete
+        # switches: -avzr --delete
         path: /
         remote_path: /var/www/html/cicd-l11/
         remote_host: 104.198.66.197
@@ -22,6 +22,6 @@ jobs:
 
     - name: Build Laravel
       run: |
-        # composer update
+        composer update
         sudo chgrp -R www-data storage bootstrap/cache
         sudo chmod -R ug+rwx storage bootstrap/cache
