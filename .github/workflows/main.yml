@@ -20,8 +20,8 @@ jobs:
         remote_user: bennysantoso
         remote_key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
 
-    - name: Build
+    - name: Build Laravel
       run: |
-        composer update
+        # composer update
         sudo chgrp -R www-data storage bootstrap/cache
         sudo chmod -R ug+rwx storage bootstrap/cache
