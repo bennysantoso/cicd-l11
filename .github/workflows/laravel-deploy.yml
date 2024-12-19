@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [ main ]
+name: 🚀 Deploy website on push
+build:
+        name: Build and Deploy
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@master
+            -   name: Deploy to Server
+                uses: ngocquyhoang/deploy@laravel
+                with:
+                    user: bennysantoso
+                    host: 104.198.66.197
+                    port: 22
+                    path: /var/www/html/cicd-l11
+                    owner: bennysantoso
+                env:
+                    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY_PRIVATE }}
